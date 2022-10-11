@@ -45,11 +45,11 @@ class demo_model():
         self.y = load_iris().target
     def model_build(self):
         x_train , x_test , y_train , y_test = train_test_split(self.x,self.y,test_size = 0.3)
-        with mlflow.start_run(run_name = "cicd_demo"):
-            model = DecisionTreeClassifier(max_depth = 1 , random_state = 10)
-            model.fit(x_train , y_train) 
-            predicted = model.predict(x_test)
-            accuracy = metrics.accuracy_score(y_test , predicted)
+        #with mlflow.start_run(run_name = "cicd_demo"):
+        model = DecisionTreeClassifier(max_depth = 1 , random_state = 10)
+        model.fit(x_train , y_train) 
+        predicted = model.predict(x_test)
+        accuracy = metrics.accuracy_score(y_test , predicted)
             #mlflow.log_param("random_state" , 10)
             #mlflow.log_param("max_depth" , 1)
             #mlflow.log_metric("accuarcy" , accuracy)
