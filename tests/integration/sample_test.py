@@ -75,7 +75,7 @@ if __name__ == "__main__":
     # it's intentionally done in this way to comply with jobs run result checks
     # for other tests, please simply replace the SampleJobIntegrationTest with your custom class name
     loader = unittest.TestLoader()
-    tests = loader.loadTestsFromTestCase(demo_model)
+    tests = loader.loadTestsFromTestCase(SampleJobIntegrationTest)
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(tests)
     if not result.wasSuccessful():
