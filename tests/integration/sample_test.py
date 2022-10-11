@@ -50,18 +50,17 @@ class demo_model():
             model.fit(x_train , y_train) 
             predicted = model.predict(x_test)
             accuracy = metrics.accuracy_score(y_test , predicted)
-            print(accuracy)
             mlflow.log_param("random_state" , 10)
             mlflow.log_param("max_depth" , 1)
             mlflow.log_metric("accuarcy" , accuracy)
             mlflow.sklearn.log_model(model , "decision_tree")
-            modelpath = "/dbfs/mlflow/iris/model-%s-%f" % ("decision_tree" , 2)
-            mlflow.sklearn.save_model(model,modelpath)
-            run_id  = mlflow.active_run().info.run_id
+            #modelpath = "/dbfs/mlflow/iris/model-%s-%f" % ("decision_tree" , 2)
+            #mlflow.sklearn.save_model(model,modelpath)
+            #run_id  = mlflow.active_run().info.run_id
         
-        model_name = "CICD_IRIS_model"
+"""         model_name = "CICD_IRIS_model"
         model_uri = "runs:/{run_id}/{artifact_path}".format(run_id = run_id , artifact_path = "decision_tree")
-        model_details = mlflow.register_model(model_uri = model_uri , name = model_name)
+        model_details = mlflow.register_model(model_uri = model_uri , name = model_name) """
 
 """         client = MlflowClient()
         client.transition_model_version_stage(
