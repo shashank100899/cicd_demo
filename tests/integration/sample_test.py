@@ -63,11 +63,11 @@ class demo_model():
         model_uri = "runs:/{run_id}/{artifact_path}".format(run_id = run_id , artifact_path = "decision_tree")
         model_details = mlflow.register_model(model_uri = model_uri , name = model_name)
 
-        client = MlflowClient()
+"""         client = MlflowClient()
         client.transition_model_version_stage(
                     model_details.name , 
                     model_details.version,
-                    stage = "Production")
+                    stage = "Production") """
 
 
 if __name__ == "__main__":
