@@ -39,7 +39,7 @@ class SampleJobIntegrationTest(unittest.TestCase):
         self.dbutils.fs.rm(self.test_dir, True)
 
 
-class demo_model():
+""" class demo_model():
     def __init__(self):
         self.x = load_iris().data
         self.y = load_iris().target
@@ -67,7 +67,7 @@ class demo_model():
         client.transition_model_version_stage(
                     model_details.name , 
                     model_details.version,
-                    stage = "Production")
+                    stage = "Production") """
 
 
 if __name__ == "__main__":
@@ -82,6 +82,6 @@ if __name__ == "__main__":
         raise RuntimeError(
             "One or multiple tests failed. Please check job logs for additional information."
         )
-    model_object = demo_model()
-    model_object.model_build()
+"""     model_object = demo_model()
+    model_object.model_build() """
 
