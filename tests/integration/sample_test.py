@@ -82,4 +82,6 @@ if __name__ == "__main__":
         raise RuntimeError(
             "One or multiple tests failed. Please check job logs for additional information."
         )
-
+    
+    model_object = demo_model()
+    model_object.model_build()
