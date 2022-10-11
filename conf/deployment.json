@@ -30,7 +30,18 @@
                     "node_type_id": "Standard_F4s",
                     "num_workers": 1
                 },
-                "libraries": [],
+                "libraries": [
+                    {
+                        "pypi": {
+                          "package": "mlflow"
+                        }
+                      },
+                      {
+                        "pypi": {
+                           "package": "sklearn"
+                        }
+                      }
+                ],
                 "email_notifications": {
                     "on_start": [],
                     "on_success": [],
