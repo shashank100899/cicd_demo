@@ -39,7 +39,7 @@ class SampleJobIntegrationTest(unittest.TestCase):
         self.dbutils.fs.rm(self.test_dir, True)
 
 
-""" class demo_model():
+class demo_model():
     def __init__(self):
         self.x = load_iris().data
         self.y = load_iris().target
@@ -67,7 +67,7 @@ class SampleJobIntegrationTest(unittest.TestCase):
         client.transition_model_version_stage(
                     model_details.name , 
                     model_details.version,
-                    stage = "Production") """
+                    stage = "Production")
 
 
 if __name__ == "__main__":
@@ -75,13 +75,11 @@ if __name__ == "__main__":
     # it's intentionally done in this way to comply with jobs run result checks
     # for other tests, please simply replace the SampleJobIntegrationTest with your custom class name
     loader = unittest.TestLoader()
-    tests = loader.loadTestsFromTestCase(SampleJobIntegrationTest)
+    tests = loader.loadTestsFromTestCase(demo_model)
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(tests)
     if not result.wasSuccessful():
         raise RuntimeError(
             "One or multiple tests failed. Please check job logs for additional information."
         )
-"""     model_object = demo_model()
-    model_object.model_build() """
 
