@@ -1,16 +1,15 @@
 import unittest
+from uuid import uuid4
 
 import mlflow
 import mlflow.sklearn
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
-from sklearn import metrics
-from mlflow.tracking.client import MlflowClient
-
 from cicd_demo.jobs.sample.entrypoint import SampleJob
-from uuid import uuid4
+from mlflow.tracking.client import MlflowClient
 from pyspark.dbutils import DBUtils  # noqa
+from sklearn import metrics
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
 
 
 class SampleJobIntegrationTest(unittest.TestCase):
@@ -45,14 +44,14 @@ class demo_model():
         self.y = load_iris().target
     def model_build(self):
         x_train , x_test , y_train , y_test = train_test_split(self.x,self.y,test_size = 0.3)
-        with mlflow.start_run(run_name = "cicd_demo"):
-            model = DecisionTreeClassifier(max_depth = 1 , random_state = 10)
-            model.fit(x_train , y_train) 
-            predicted = model.predict(x_test)
-            accuracy = metrics.accuracy_score(y_test , predicted)
-            #mlflow.log_param("random_state" , 10)
-            #mlflow.log_param("max_depth" , 1)
-            #mlflow.log_metric("accuarcy" , accuracy)
+        #with mlflow.start_run(run_name = "cicd_demo"):
+        model = DecisionTreeClassifier(max_depth = 1 , random_state = 10)
+        model.fit(x_train , y_train) 
+        predicted = model.predict(x_test)
+        accuracy = metrics.accuracy_score(y_test , predicted)
+        mlflow.log_param("random_state" , 10)
+        mlflow.log_param("max_depth" , 1)
+        mlflow.log_metric("accuarcy" , accuracy)
             #mlflow.sklearn.log_model(model , "decision_tree")
             #modelpath = "/dbfs/mlflow/iris/model-%s-%f" % ("decision_tree" , 2)
             #mlflow.sklearn.save_model(model,modelpath)
